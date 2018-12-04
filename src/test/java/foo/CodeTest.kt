@@ -1,11 +1,7 @@
 package foo
 
 import foo.bar.Code
-import org.testng.annotations.AfterClass
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
 import org.testng.annotations.Test
-import java.io.File
 
 /**
  * @author kir
@@ -40,7 +36,9 @@ class CodeTest {
 
     private fun publishScreenshot() {
 
+        // Looks like does not work, https://youtrack.jetbrains.com/issue/TW-58243
         //println("##teamcity[publishArtifacts 'pictureForAttention.png']")
+
         println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
 
     }
