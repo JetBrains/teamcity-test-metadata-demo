@@ -21,6 +21,7 @@ changeBuildType(RelativeId("TestMetadataDemo")) {
     steps {
         insert(1) {
             script {
+                executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
                 scriptContent = """echo "##teamcity[publishArtifacts 'pictureForAttention.png']""""
             }
         }
