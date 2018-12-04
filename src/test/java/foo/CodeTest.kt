@@ -1,6 +1,7 @@
 package foo
 
 import foo.bar.Code
+import org.testng.annotations.AfterMethod
 import org.testng.annotations.Test
 
 /**
@@ -23,7 +24,6 @@ class CodeTest {
         val testsPath = "gradle_test_report.zip!/classes/${javaClass.name}.html"
         println("##teamcity[testMetadata key='Gradle test report' type='artifact' value='$testsPath']")
 
-
     }
 
     fun test_failure() {
@@ -31,4 +31,13 @@ class CodeTest {
 
         throw Exception("And here comes some problem");
     }
+
+    @AfterMethod
+    fun publishScreenshot() {
+
+        println("##teamcity[publishArtifact 'pictureForAttention.png']")
+        println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
+
+    }
+
 }
