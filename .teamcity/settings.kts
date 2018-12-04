@@ -39,6 +39,10 @@ object TestMetadataDemo : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    params {
+        param("teamcity.build.serviceMessages.logOriginal", "true")
+    }
+
     steps {
         gradle {
             tasks = "clean build"

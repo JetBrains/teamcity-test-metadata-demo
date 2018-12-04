@@ -2,6 +2,7 @@ package foo
 
 import foo.bar.Code
 import org.testng.annotations.AfterMethod
+import org.testng.annotations.AfterTest
 import org.testng.annotations.Test
 
 /**
