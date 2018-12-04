@@ -9,9 +9,10 @@ import org.testng.annotations.Test
  * @author kir
  */
 
-@Test
+
 class CodeTest {
 
+    @Test
     fun test_ok() {
 
         // Simple text metadata:
@@ -27,6 +28,7 @@ class CodeTest {
 
     }
 
+    @Test
     fun test_failure() {
         test_ok();
 
@@ -36,6 +38,7 @@ class CodeTest {
     @AfterMethod
     fun publishScreenshot() {
 
+        println("This is AfterMethod")
         println("##teamcity[publishArtifact 'pictureForAttention.png']")
         println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
 
