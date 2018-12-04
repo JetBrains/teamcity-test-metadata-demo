@@ -27,6 +27,7 @@ class CodeTest {
         val testsPath = "gradle_test_report.zip!/classes/${javaClass.name}.html"
         println("##teamcity[testMetadata key='Gradle test report' type='artifact' value='$testsPath']")
 
+        publishScreenshot()
     }
 
     @Test
@@ -36,7 +37,6 @@ class CodeTest {
         throw Exception("And here comes some problem");
     }
 
-    @AfterClass
     fun publishScreenshot() {
 
         println("This is AfterMethod")
