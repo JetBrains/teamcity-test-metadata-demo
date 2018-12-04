@@ -27,29 +27,8 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2018.2"
 
 project {
-
     buildType(TestMetadataDemo)
-    buildType(BigKey)
 }
-
-object BigKey : BuildType({
-    name = "big key"
-
-    params {
-        param("teamcity.build.serviceMessages.logOriginal", "true")
-    }
-
-    steps {
-        script {
-            scriptContent = """
-                echo "##teamcity[testStarted name='failedTest']"
-                echo "##teamcity[testMetadata testName='failedTest' name='a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line a very long line' type='text' value='some text']"
-                echo "##teamcity[testFailed name='failedTest']"
-                echo "##teamcity[testFinished name='failedTest']"
-            """.trimIndent()
-        }
-    }
-})
 
 object TestMetadataDemo : BuildType({
     name = "Test metadata demo"
