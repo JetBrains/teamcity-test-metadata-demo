@@ -5,5 +5,5 @@ package foo.bar
  */
 
 class Code {
-    fun value() = "4"
+    fun value() = Math.random() * 1000
 }
