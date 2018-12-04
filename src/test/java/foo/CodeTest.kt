@@ -37,9 +37,8 @@ class CodeTest {
         throw Exception("And here comes some problem");
     }
 
-    fun publishScreenshot() {
+    private fun publishScreenshot() {
 
-        println("This is AfterMethod")
         println("##teamcity[publishArtifact 'pictureForAttention.png']")
         println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
 
