@@ -40,7 +40,7 @@ class CodeTest {
 
     private fun publishScreenshot() {
 
-        println("##teamcity[publishArtifacts 'pictureForAttention.png']")
+        //println("##teamcity[publishArtifacts 'pictureForAttention.png']")
         println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
 
     }
