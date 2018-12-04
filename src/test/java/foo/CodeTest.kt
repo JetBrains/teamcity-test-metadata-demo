@@ -1,6 +1,7 @@
 package foo
 
 import foo.bar.Code
+import org.testng.annotations.AfterClass
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.Test
@@ -35,7 +36,7 @@ class CodeTest {
         throw Exception("And here comes some problem");
     }
 
-    @AfterMethod
+    @AfterClass
     fun publishScreenshot() {
 
         println("This is AfterMethod")
