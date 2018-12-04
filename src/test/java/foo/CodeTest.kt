@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.Test
+import java.io.File
 
 /**
  * @author kir
@@ -39,7 +40,7 @@ class CodeTest {
 
     private fun publishScreenshot() {
 
-        println("##teamcity[publishArtifacts 'pictureForAttention.png']")
+        println("##teamcity[publishArtifacts '${File("pictureForAttention.png").absolutePath} => pictureForAttention.png']")
         println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']")
 
     }
