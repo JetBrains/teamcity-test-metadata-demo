@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -16,4 +18,24 @@ changeBuildType(RelativeId("TestMetadataDemo")) {
         "Unexpected option value: artifactRules = $artifactRules"
     }
     artifactRules = "build/reports/tests/test => gradle_test_report.zip"
+
+    expectSteps {
+        gradle {
+            tasks = "clean build"
+            buildFile = ""
+            gradleWrapperPath = ""
+        }
+    }
+    steps {
+        insert(1) {
+            script {
+                executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                scriptContent = """
+                    echo "##teamcity[testStarted name='test']"
+                    echo "##teamcity[testStdOut name='test' out='##teamcity|[buildProblem description=|'my_problem|'|]' tc:tags='tc:parseServiceMessagesInside']"
+                    echo "##teamcity[testFinished name='test']"
+                """.trimIndent()
+            }
+        }
+    }
 }
