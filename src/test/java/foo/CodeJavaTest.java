@@ -1,6 +1,9 @@
 package foo;
 
+import foo.bar.Code;
 import org.testng.annotations.Test;
+
+import static java.lang.String.*;
 
 /**
  * @author kir
@@ -16,12 +19,12 @@ public class CodeJavaTest {
         System.out.println("##teamcity[testMetadata key='some key' value='some value']");
 
         // Numeric metadata
-        System.out.println("##teamcity[testMetadata key='a numeric value' type='number' value='${Code().value()}']");
+        System.out.println(format("##teamcity[testMetadata key='a numeric value' type='number' value='%f']", new Code().value()));
 
         // Reference to an artifact
         // gradle_test_report.zip should be created by specifying corresponding artifact path in TC
-        String testsPath = "gradle_test_report.zip!/classes/${javaClass.name}.html";
-        System.out.println("##teamcity[testMetadata key='Gradle test report' type='artifact' value='$testsPath']");
+        String testsPath = format("gradle_test_report.zip!/classes/%s.html", getClass().getName());
+        System.out.println(format("##teamcity[testMetadata key='Gradle test report' type='artifact' value='%s']", testsPath));
 
         publishScreenshot();
     }
