@@ -1,0 +1,45 @@
+package foo;
+
+import org.testng.annotations.Test;
+
+/**
+ * @author kir
+ */
+
+
+public class CodeJavaTest {
+
+    @Test
+    public void test_ok() {
+
+        // Simple text metadata:
+        System.out.println("##teamcity[testMetadata key='some key' value='some value']");
+
+        // Numeric metadata
+        System.out.println("##teamcity[testMetadata key='a numeric value' type='number' value='${Code().value()}']");
+
+        // Reference to an artifact
+        // gradle_test_report.zip should be created by specifying corresponding artifact path in TC
+        String testsPath = "gradle_test_report.zip!/classes/${javaClass.name}.html";
+        System.out.println("##teamcity[testMetadata key='Gradle test report' type='artifact' value='$testsPath']");
+
+        publishScreenshot();
+    }
+
+    @Test
+    public void test_failure() throws Exception {
+        test_ok();
+
+        throw new Exception("And here comes some problem");
+    }
+
+    private void publishScreenshot() {
+
+        // Looks like does not work, https://youtrack.jetbrains.com/issue/TW-58243
+        System.out.println("##teamcity[publishArtifacts 'pictureForAttention.png']");
+
+        System.out.println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']");
+
+    }
+
+}
