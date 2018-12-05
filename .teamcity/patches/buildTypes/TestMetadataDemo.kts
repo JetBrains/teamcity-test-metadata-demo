@@ -16,4 +16,10 @@ changeBuildType(RelativeId("TestMetadataDemo")) {
         "Unexpected option value: artifactRules = $artifactRules"
     }
     artifactRules = "build/reports/tests/test => gradle_test_report.zip"
+
+    params {
+        add {
+            param("teamcity.agent.serviceMessage.allow.nested", "false")
+        }
+    }
 }
