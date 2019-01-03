@@ -34,8 +34,7 @@ object TestMetadataDemo : BuildType({
     name = "Test metadata demo"
 
     artifactRules =
-            "build/reports/tests/test => gradle_test_report.zip\n" +
-            "pictureForAttention.png"
+            "build/reports/tests/test => gradle_test_report.zip"
 
     vcs {
         root(DslContext.settingsRoot)
