@@ -2,7 +2,7 @@
 buildscript {
     repositories {
         mavenCentral()
-        maven { url "http://download.jetbrains.com/teamcity-repository" }
+        maven { url "https://download.jetbrains.com/teamcity-repository" }
     }
 }
 
@@ -23,7 +23,7 @@ compileTestKotlin {
 
 repositories {
     mavenCentral()
-    maven { url "http://download.jetbrains.com/teamcity-repository" }
+    maven { url "https://download.jetbrains.com/teamcity-repository" }
 }
 
 test {
