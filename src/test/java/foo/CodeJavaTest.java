@@ -38,9 +38,7 @@ public class CodeJavaTest {
 
     private void publishScreenshot() {
 
-        // Looks like does not work, https://youtrack.jetbrains.com/issue/TW-58243
         System.out.println("##teamcity[publishArtifacts 'pictureForAttention.png']");
-
         System.out.println("##teamcity[testMetadata type='image' name='Some screenshot' value='pictureForAttention.png']");
 
     }
