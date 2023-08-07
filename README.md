@@ -1,3 +1,5 @@
+[![official JetBrains project](https://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+
 # teamcity-test-metadata-demo
 
 A sample project which shows how to report test metadata/attachments to TeamCity 2018.2+
